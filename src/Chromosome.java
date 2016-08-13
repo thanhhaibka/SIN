@@ -1,6 +1,5 @@
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,7 +12,7 @@ import java.util.Random;
  * @author prnc
  */
 public class Chromosome {
-    public ArrayList chroms= new ArrayList<Sensor>();
+    public ArrayList<Sensor> chroms= new ArrayList<Sensor>();
     Map map;
     
     public Chromosome(Map map){
@@ -24,18 +23,26 @@ public class Chromosome {
         return chroms.size();
     }
     
-    public Chromosome(boolean flag){
-        if(flag) greedyInit1();
+    public Chromosome(boolean flag, Map map){
+        this.map= map;
+        if(flag) greedyInit2(100);
         else randomInit();
     }
     
-    public void greedyInit2(int maxNumber, double r1){  //init theo roads
-        ArrayList s= map.s;
+    public void greedyInit2(int maxNumber){  //init theo roads
+        ArrayList<Point> s= map.s;
         double x=0, y=0, z=0;
-        int numOfSensor=1;
-        while(!s.isEmpty()&&numOfSensor<=maxNumber){
-            Point p=(Point)s.get(maxNumber);
-            chroms.add(new Sensor(p.x, p.y, r1));
+        int numOfSensor=0;
+        while(numOfSensor<=maxNumber){
+            Point p= s.get(numOfSensor);
+            chroms.add(new Sensor(p.x, p.y, randomRadius(8, 10, 12)));
+            s.add(new Point(p.x+1.44*8, p.y));
+            s.add(new Point(p.x-1.44*8, p.y));
+            s.add(new Point(p.x, p.y+1.44*8));
+            s.add(new Point(p.x, p.y-1.44*8));
+            s.remove(p);
+            Collections.sort(s);
+            numOfSensor++;
         }
     }
     

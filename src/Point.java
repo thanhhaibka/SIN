@@ -8,7 +8,7 @@
  *
  * @author prnc
  */
-public class Point {
+public class Point implements Comparable<Point>{
     public double x;
     public double y;
     
@@ -25,5 +25,10 @@ public class Point {
     
     public boolean isGreater(Point p){
         return this.standard()>=p.standard();
+    }
+
+    @Override
+    public int compareTo(Point o) {
+        return this.standard()> o.standard()?1:(this.standard()==o.standard()?0:-1);
     }
 }

@@ -15,7 +15,7 @@ import java.util.Scanner;
  * @author prnc
  */
 public class Map {
-    public ArrayList roads= new ArrayList<Road>();
+    public ArrayList<Road> roads= new ArrayList<Road>();
     public ArrayList cars= new ArrayList<Car>();
     public ArrayList s= new ArrayList<Point>();
     public double W;
@@ -29,8 +29,8 @@ public class Map {
     public Map(double W, double H){
         this.W=W;
         this.H=H;
-        setCars("");
-        setRoads("");
+//        setCars("");
+        setRoads("/media/pc/DATA/SIN/resources/roads.txt");
         initS();
     }
     
@@ -51,32 +51,30 @@ public class Map {
         }
     }
     
-    public void setCars(String fileName){
-        try{
-            FileReader fr = new FileReader(fileName);
-            double x, y,r, v, tStart, tEnd;
-            Director d= new Director();
-            Scanner sc = new Scanner(fr);
-            while (sc.hasNextDouble()) {
-                x = sc.nextDouble();
-                y = sc.nextDouble();
-                r = sc.nextDouble();
-                d.x = sc.nextInt();
-                d.y = sc.nextInt();
-                v = sc.nextDouble();
-                tStart=sc.nextDouble();
-                tEnd=sc.nextDouble();
-                roads.add(new Car(x, y, r, v, d, tStart, tEnd));
-            }
-        }catch(Exception e){
-            
-        }
-    }
+//    public void setCars(String fileName){
+//        try{
+//            FileReader fr = new FileReader(fileName);
+//            double x, y,r, v, tStart, tEnd;
+//            Director d= new Director();
+//            Scanner sc = new Scanner(fr);
+//            while (sc.hasNextDouble()) {
+//                x = sc.nextDouble();
+//                y = sc.nextDouble();
+//                r = sc.nextDouble();
+//                d.x = sc.nextInt();
+//                d.y = sc.nextInt();
+//                v = sc.nextDouble();
+//                tStart=sc.nextDouble();
+//                tEnd=sc.nextDouble();
+//                roads.add(new Car(x, y, r, v, d, tStart, tEnd));
+//            }
+//        }catch(Exception e){
+//
+//        }
+//    }
     
     public void initS(){
-        int i=0;
-        while(!roads.isEmpty()){
-            Road r= (Road)roads.get(i);
+        for(Road r: roads){
             s.add(r.lt);
             s.add(r.rt);
             s.add(r.lb);
