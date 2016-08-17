@@ -1,9 +1,10 @@
+import Data.Map;
+import app.Sensor;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.io.FileReader;
-import java.util.Scanner;
 
 /**
  * Created by pc on 06/08/2016.
@@ -45,11 +46,11 @@ public class Draw extends JFrame{
         g2d.drawLine(100, 100, 0,100 );
         Map map = new Map(100, 100);
         map.sortS();
-//        Chromosome chromosome= new Chromosome(true, map);
+//        app.Chromosome chromosome= new app.Chromosome(true, map);
         for(Road road: map.roads){
             drawRoad(g2d, road);
         }
-//        for(Sensor s: chromosome.chroms){
+//        for(app.Sensor s: chromosome.chroms){
 //            drawSensor(g2d, s);
 //        }
     }

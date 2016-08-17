@@ -1,5 +1,5 @@
 
-import java.util.Random;
+import Data.Map;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,8 +16,8 @@ public class SIN_SA {
     public static void main(String args[]){
         Map map= new Map(100, 100);
         map.sortS();
-//        Chromosome ch1= new Chromosome(map);
-//        Chromosome ch2= ch1;
+//        app.Chromosome ch1= new app.Chromosome(map);
+//        app.Chromosome ch2= ch1;
 //        double alpha=0.95;
 //        for(int T=1000; T>=0.00001; T*=alpha){
 //            Random rd = new Random();
