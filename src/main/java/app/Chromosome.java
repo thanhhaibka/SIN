@@ -40,7 +40,7 @@ public class Chromosome {
         while(numOfSensor<=N){
             Set<Point> points= map.road.getAllPoints();
             for(Point p: points){
-                
+
             }
         }
     }

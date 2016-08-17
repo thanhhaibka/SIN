@@ -4,6 +4,8 @@ package Data;/*
  * and open the template in the editor.
  */
 
+import java.util.Random;
+
 /**
  *
  * @author prnc
@@ -11,6 +13,14 @@ package Data;/*
 public class Point implements Comparable<Point>{
     public double x;
     public double y;
+    public int clusterNumber;
+
+    public static Point createRandomPoint(int max, int min){
+        Random r = new Random();
+        Double x = max + (min - max) * r.nextDouble();
+        Double y = min + (max - min) * r.nextDouble();
+        return new Point(x,y);
+    }
     
     public Point(double x, double y){
         this.x= x;
@@ -25,6 +35,17 @@ public class Point implements Comparable<Point>{
     
     public boolean isGreater(Point p){
         return this.standard()>=p.standard();
+    }
+
+    public static Double getDistance(Point p1, Point p2){
+        return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+    }
+
+    public int getClusterNumber() {
+        return clusterNumber;
+    }
+    public void setClusterNumber(int clusterNumber) {
+        this.clusterNumber = clusterNumber;
     }
 
     @Override
