@@ -17,6 +17,14 @@ public class Kmean {
     final static int MAX_COORDINATE = 100;
     final static int MIN_COORDINATE = 0;
 
+    public List<Cluster> getClusters() {
+        return clusters;
+    }
+
+    public void setClusters(List<Cluster> clusters) {
+        this.clusters = clusters;
+    }
+
     public List<Point> getPoints() {
         return points;
     }
@@ -25,9 +33,10 @@ public class Kmean {
         this.points = points;
     }
 
-    public Kmean(){
-        this.points = new ArrayList<>();
+    public Kmean(List<Point> points){
+        this.points = points;
         this.clusters = new ArrayList<>();
+        clustering();
     }
 
     private void init(){
@@ -49,7 +58,7 @@ public class Kmean {
         }
     }
 
-    private List<Point> getCentrePoints(){
+    public List<Point> getCentrePoints(){
         List<Point> listCentrePoints = new ArrayList<>();
         for(int i = 0; i < NUM_CLUSTERS; i++){
             Point point = clusters.get(i).getCentrePoint();
@@ -58,7 +67,7 @@ public class Kmean {
         return listCentrePoints;
     }
 
-    private void updateCentrePoint(){
+    public void updateCentrePoint(){
         for(int i = 0; i < NUM_CLUSTERS; i++ ){
             double x = 0.0;
             double y = 0.0;
@@ -74,7 +83,7 @@ public class Kmean {
         }
     }
 
-    private void updateCluster(){
+    public void updateCluster(){
         for(int i = 0; i < NUM_POINTS; i++){
             Double min = Double.MAX_VALUE;
             int numCluster = 0;
@@ -92,7 +101,7 @@ public class Kmean {
         updateCentrePoint();
     }
 
-    private void clustering(){
+    public void clustering(){
         boolean finish = false;
         List<Point> oldCentrePointList = null;
         List<Point> newCentrePointList = null;
@@ -124,8 +133,8 @@ public class Kmean {
     }
 
     public static void main(String[] args){
-        Kmean kmean = new Kmean();
-        kmean.init();
-        kmean.clustering();
+//        Kmean kmean = new Kmean();
+//        kmean.init();
+//        kmean.clustering();
     }
 }

@@ -1,7 +1,13 @@
 package app;
 
+import Data.Car;
 import Data.MapCreater;
 import Data.Point;
+import cluster.Cluster;
+import cluster.Kmean;
+import org.jgrapht.UndirectedGraph;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.SimpleWeightedGraph;
 
 import java.util.*;
 
@@ -19,6 +25,9 @@ public class Chromosome {
     public final int N=100;
     public ArrayList<Sensor> chroms;
     MapCreater map;
+    public final int K=24;
+    public final long T=0;
+    UndirectedGraph<Point, DefaultWeightedEdge> graph;
     
     public Chromosome(MapCreater map){
         this.map=map;
@@ -30,8 +39,7 @@ public class Chromosome {
     
     public Chromosome(boolean flag, MapCreater map){
         this.map= map;
-//        if(flag) greedyInit(100);
-//        else randomInit();
+        graph= new SimpleWeightedGraph<Point, DefaultWeightedEdge>(DefaultWeightedEdge.class);
     }
 
     public void greedyInit(){
@@ -44,51 +52,34 @@ public class Chromosome {
             }
         }
     }
-    
-//    public void greedyInit2(int maxNumber){  //init theo roads
-//        ArrayList<Data.Point> s= map.s;
-//        double x=0, y=0, z=0;
-//        int numOfSensor=0;
-//        while(numOfSensor<=maxNumber){
-//            Data.Point p= s.get(numOfSensor);
-//            chroms.add(new Sensor(p.x, p.y, randomRadius(8, 10, 12)));
-//            s.add(new Data.Point(p.x+1.44*8, p.y));
-//            s.add(new Data.Point(p.x-1.44*8, p.y));
-//            s.add(new Data.Point(p.x, p.y+1.44*8));
-//            s.add(new Data.Point(p.x, p.y-1.44*8));
-//            s.remove(p);
-//            Collections.sort(s);
-//            numOfSensor++;
-//        }
-//    }
-    
-//    public void greedyInit1(){  //init theo cars
-//        ArrayList cars= map.cars;
-//        ArrayList roads= map.roads;
-//        double x=0,y=0, r=0;
-//        while(!cars.isEmpty()&&chroms.size()<map.N){
-//            Sensor sensor= new Sensor();
-//            r=sensor.r;
-//            int i=0;
-//            Car car= (Car)cars.get(i);
-////
-////            while(!s.flag){
-////                if(i==0){
-////                    x=car.x;
-////                    y=car.y;
-////                }else{
-////                   sensor= (app.Sensor)chroms.get(i-1);
-//////                   Director d1= new Director(1, 0); //xe di ngang sang phai
-//////                   Director d2= new Director(0,-1); //xe di doc len tren
-//////                   Director d3= new Director(-1, 0);//xe di ngang sang trai
-//////                   Director d4= new Director(0, 1);//xe di doc xuong duoi
-////                   x=car.x+car.d.x*1.73*r;
-////                   y=car.y+car.d.y*1.73*r;
-////                }
-////                chroms.add(new app.Sensor(x, y, r));
-////            }
-//        }
-//    }
+
+
+    public void setGraph(){
+        Kmean kmean= new Kmean(map.targets);
+        Set<Car> cars= map.cars;
+        List<Cluster> clusters= kmean.getClusters();
+        List<Point> points= kmean.getCentrePoints();
+        for(int i=0;i<K*T; i+=T){
+            UndirectedGraph<Point, DefaultWeightedEdge> g= new SimpleWeightedGraph<Point, DefaultWeightedEdge>(DefaultWeightedEdge.class);
+            List<Point> mPoints= new ArrayList<>();
+            for (Car c: cars) {
+                mPoints.add(c.getCar(i));
+            }
+            mPoints= merge(points, mPoints);
+            for(int var1=0; var1<mPoints.size(); var1++){
+                for(int var2=0; var2<var1; var2++){
+
+                }
+            }
+        }
+    }
+
+    public List<Point> merge(List<Point> var1, List<Point> var2){
+        List<Point> temp= new ArrayList<>();
+        temp.addAll(var1);
+        temp.addAll(var2);
+        return temp;
+    }
     
     public void randomInit(){
         

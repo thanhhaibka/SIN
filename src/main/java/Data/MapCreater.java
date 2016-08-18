@@ -1,10 +1,14 @@
 package Data;
 
+import cluster.Cluster;
+import cluster.Kmean;
+import org.jgrapht.UndirectedGraph;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.SimpleGraph;
+import org.jgrapht.graph.SimpleWeightedGraph;
+
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,7 +22,7 @@ import java.util.Set;
  */
 public class MapCreater {
     public static Road road;
-    public static Set<Point> targets;
+    public static List<Point> targets;
     public Set<Car> cars;
     public ArrayList s= new ArrayList<Point>();
     public double W;
@@ -28,7 +32,7 @@ public class MapCreater {
     public MapCreater(){
         
     }
-    
+
     public MapCreater(double W, double H){
         this.W=W;
         this.H=H;

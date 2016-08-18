@@ -29,4 +29,13 @@ public class Car {
     public void setCarID(String carID) {
         this.carID = carID;
     }
+
+    public Point getCar(long time){
+        for (CarInTime c: cars) {
+            if(time== c.getTime()){
+                return new Point(c.x, c.y);
+            }
+        }
+        return null;
+    }
 }
