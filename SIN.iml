@@ -12,5 +12,24 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.jgrapht:jgrapht-core:0.9.1" level="project" />
+    <orderEntry type="library" name="Maven: org.processing:core:2.2.1" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: mesh:mesh:1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/library/mesh.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: hull:hull:1.4">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/library/quickhull3d.1.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

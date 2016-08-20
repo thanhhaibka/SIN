@@ -12,8 +12,7 @@ public class Kmean {
     private List<Point> points;
     private List<Cluster> clusters;
 
-    final static int NUM_POINTS = 1000;
-    final static int NUM_CLUSTERS = 10;
+    private int NUM_CLUSTERS;
     final static int MAX_COORDINATE = 100;
     final static int MIN_COORDINATE = 0;
 
@@ -33,17 +32,19 @@ public class Kmean {
         this.points = points;
     }
 
-    public Kmean(List<Point> points){
+    public Kmean(List<Point> points, int NUM_CLUSTERS){
         this.points = points;
+        this.NUM_CLUSTERS= NUM_CLUSTERS;
         this.clusters = new ArrayList<>();
+        init();
         clustering();
     }
 
     private void init(){
-        for(int i = 0; i < NUM_POINTS; i++){
-            Point point = Point.createRandomPoint(MAX_COORDINATE, MIN_COORDINATE);
-            points.add(point);
-        }
+//        for(int i = 0; i < points.size(); i++){
+//            Point point = Point.createRandomPoint(MAX_COORDINATE, MIN_COORDINATE);
+//            points.add(point);
+//        }
 
         for(int i = 0; i < NUM_CLUSTERS; i++){
             Cluster cluster = new Cluster(i);
@@ -84,7 +85,7 @@ public class Kmean {
     }
 
     public void updateCluster(){
-        for(int i = 0; i < NUM_POINTS; i++){
+        for(int i = 0; i < points.size(); i++){
             Double min = Double.MAX_VALUE;
             int numCluster = 0;
             for(int j = 0; j < NUM_CLUSTERS; j++){
@@ -123,7 +124,7 @@ public class Kmean {
                 finish = true;
             }
         }
-        printClusters();
+//        printClusters();
     }
 
     private void printClusters(){

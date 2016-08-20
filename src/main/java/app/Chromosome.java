@@ -54,25 +54,25 @@ public class Chromosome {
     }
 
 
-    public void setGraph(){
-        Kmean kmean= new Kmean(map.targets);
-        Set<Car> cars= map.cars;
-        List<Cluster> clusters= kmean.getClusters();
-        List<Point> points= kmean.getCentrePoints();
-        for(int i=0;i<K*T; i+=T){
-            UndirectedGraph<Point, DefaultWeightedEdge> g= new SimpleWeightedGraph<Point, DefaultWeightedEdge>(DefaultWeightedEdge.class);
-            List<Point> mPoints= new ArrayList<>();
-            for (Car c: cars) {
-                mPoints.add(c.getCar(i));
-            }
-            mPoints= merge(points, mPoints);
-            for(int var1=0; var1<mPoints.size(); var1++){
-                for(int var2=0; var2<var1; var2++){
-
-                }
-            }
-        }
-    }
+//    public void setGraph(){
+//        Kmean kmean= new Kmean(map.targets);
+//        Set<Car> cars= map.cars;
+//        List<Cluster> clusters= kmean.getClusters();
+//        List<Point> points= kmean.getCentrePoints();
+//        for(int i=0;i<K*T; i+=T){
+//            UndirectedGraph<Point, DefaultWeightedEdge> g= new SimpleWeightedGraph<Point, DefaultWeightedEdge>(DefaultWeightedEdge.class);
+//            List<Point> mPoints= new ArrayList<>();
+//            for (Car c: cars) {
+//                mPoints.add(c.getCar(i));
+//            }
+//            mPoints= merge(points, mPoints);
+//            for(int var1=0; var1<mPoints.size(); var1++){
+//                for(int var2=0; var2<var1; var2++){
+//
+//                }
+//            }
+//        }
+//    }
 
     public List<Point> merge(List<Point> var1, List<Point> var2){
         List<Point> temp= new ArrayList<>();
