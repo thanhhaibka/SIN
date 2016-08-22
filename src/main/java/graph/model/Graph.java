@@ -3,7 +3,11 @@ package graph.model;
 import java.util.List;
 
 /**
+<<<<<<< HEAD
  * Created by pc on 18/08/2016.
+=======
+ * Created by prnc on 19/08/2016.
+>>>>>>> ceb0b9dbbcbc92103a5797cb782997a97d5ff8ea
  */
 public class Graph {
     private final List<Vertex> vertexes;

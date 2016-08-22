@@ -8,14 +8,41 @@ import java.util.List;
 /**
  * Created by prnc on 17/08/2016.
  */
-public class Kmean {
+public class Kmean implements Comparable<Kmean>{
     private List<Point> points;
     private List<Cluster> clusters;
+    private double averValue;
 
-    final static int NUM_POINTS = 1000;
-    final static int NUM_CLUSTERS = 10;
+    public int getNUM_CLUSTERS() {
+        return NUM_CLUSTERS;
+    }
+
+    public void setNUM_CLUSTERS(int NUM_CLUSTERS) {
+        this.NUM_CLUSTERS = NUM_CLUSTERS;
+    }
+
+    private int NUM_CLUSTERS;
     final static int MAX_COORDINATE = 100;
     final static int MIN_COORDINATE = 0;
+
+    public double getAverValue() {
+        return averValue;
+    }
+
+    public void setAverValue() {
+        int value=0;
+        for (Cluster cluster: this.clusters) {
+            int count=0, sum=0;
+            for(Point point: cluster.getPoints()){
+                sum+= Point.getDistance(point, cluster.getCentrePoint());
+                count++;
+            }
+            if(count!=0){
+                value+=sum/count;
+            }
+        }
+        this.averValue= value;
+    }
 
     public List<Cluster> getClusters() {
         return clusters;
@@ -33,18 +60,16 @@ public class Kmean {
         this.points = points;
     }
 
-    public Kmean(List<Point> points){
+    public Kmean(List<Point> points, int NUM_CLUSTERS){
         this.points = points;
+        this.NUM_CLUSTERS= NUM_CLUSTERS;
         this.clusters = new ArrayList<>();
+        init();
         clustering();
+        setAverValue();
     }
 
     private void init(){
-        for(int i = 0; i < NUM_POINTS; i++){
-            Point point = Point.createRandomPoint(MAX_COORDINATE, MIN_COORDINATE);
-            points.add(point);
-        }
-
         for(int i = 0; i < NUM_CLUSTERS; i++){
             Cluster cluster = new Cluster(i);
             cluster.setCentrePoint(points.get(i));
@@ -84,7 +109,7 @@ public class Kmean {
     }
 
     public void updateCluster(){
-        for(int i = 0; i < NUM_POINTS; i++){
+        for(int i = 0; i < points.size(); i++){
             Double min = Double.MAX_VALUE;
             int numCluster = 0;
             for(int j = 0; j < NUM_CLUSTERS; j++){
@@ -123,7 +148,7 @@ public class Kmean {
                 finish = true;
             }
         }
-        printClusters();
+//        printClusters();
     }
 
     private void printClusters(){
@@ -136,5 +161,10 @@ public class Kmean {
 //        Kmean kmean = new Kmean();
 //        kmean.init();
 //        kmean.clustering();
+    }
+
+    @Override
+    public int compareTo(Kmean o) {
+        return this.averValue< o.averValue?-1:(this.averValue==o.averValue?0:1);
     }
 }

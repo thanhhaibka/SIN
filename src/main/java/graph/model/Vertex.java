@@ -1,6 +1,7 @@
 package graph.model;
 
 import Data.Point;
+<<<<<<< HEAD
 
 /**
  * Created by pc on 18/08/2016.
@@ -15,6 +16,25 @@ public class Vertex extends Point{
         this.id = id;
         this.name = name;
     }
+=======
+import cluster.Cluster;
+
+/**
+ * Created by prnc on 19/08/2016.
+ */
+public class Vertex extends Cluster{
+    final private String id;
+    final private String name;
+
+    public Vertex(String id, String name, Cluster cluster) {
+        super(Integer.parseInt(id));
+        this.setCentrePoint(cluster.getCentrePoint());
+        this.setPoints(cluster.getPoints());
+        this.id = id;
+        this.name = name;
+    }
+
+>>>>>>> ceb0b9dbbcbc92103a5797cb782997a97d5ff8ea
     public String getId() {
         return id;
     }
@@ -53,4 +73,8 @@ public class Vertex extends Point{
         return name;
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ceb0b9dbbcbc92103a5797cb782997a97d5ff8ea

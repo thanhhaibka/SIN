@@ -1,9 +1,9 @@
 package graph.model;
 
 /**
- * Created by pc on 18/08/2016.
+ * Created by prnc on 19/08/2016.
  */
-public class Edge {
+public class Edge  {
     private final String id;
     private final Vertex source;
     private final Vertex destination;
@@ -34,4 +34,6 @@ public class Edge {
     public String toString() {
         return source + " " + destination;
     }
+
+
 }

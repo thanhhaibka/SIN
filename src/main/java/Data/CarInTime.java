@@ -5,23 +5,24 @@ import app.Sensor;
 /**
  * Created by prnc on 17/08/2016.
  */
-public class CarInTime extends Sensor{
-    private Long time;
+public class CarInTime extends Point{
+    private int time;
 
-    public CarInTime(Long time) {
+    public CarInTime(double x, double y, int time) {
+        super(x, y);
         this.time = time;
     }
 
-    public CarInTime(double x, double y, double r, Long time) {
-        super(x, y, r);
-        this.time = time;
-    }
+//    public CarInTime(double x, double y, double r, Long time) {
+//        super(x, y);
+//        this.time = time;
+//    }
 
-    public Long getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(Long time) {
+    public void setTime(int time) {
         this.time = time;
     }
 }

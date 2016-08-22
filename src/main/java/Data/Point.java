@@ -49,6 +49,22 @@ public class Point implements Comparable<Point>{
     }
 
     @Override
+    public boolean equals(Object o){
+        if (this == o)
+            return true;
+        if (o == null)
+            return false;
+        if (getClass() != o.getClass())
+            return false;
+        Point other = (Point) o;
+        if(x!=other.x || y!=other.y){
+            return false;
+        }
+        return true;
+    }
+
+
+    @Override
     public int compareTo(Point o) {
         return this.standard()> o.standard()?1:(this.standard()==o.standard()?0:-1);
     }
