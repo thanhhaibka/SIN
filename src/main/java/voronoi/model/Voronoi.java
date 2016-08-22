@@ -1,5 +1,8 @@
 package voronoi.model;// the voronoi diagram (a set of edges) for a set of points (sites)
 
+import Data.Point;
+import edu.princeton.cs.introcs.StdDraw;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -7,8 +10,8 @@ import java.util.Random;
 
 public class Voronoi {
 	
-	List<Point> sites;
-	List<Edge> edges; // edges on Voronoi diagram
+	public List<Point> sites;
+	public List<Edge> edges; // edges on Voronoi diagram
 	PriorityQueue<Event> events; // priority queue represents sweep line
 	Parabola root; // binary search tree represents beach line
 	
@@ -287,7 +290,7 @@ public class Voronoi {
 
 	public static void main(String[] args) {
 		
-		int N = 100;
+		int N = 5;
 
 		ArrayList<Point> points = new ArrayList<Point>();
 
@@ -301,14 +304,13 @@ public class Voronoi {
 
 		Voronoi diagram = new Voronoi (points);
 
-		// draw results
-//		StdDraw.setPenRadius(.005);
+		StdDraw.setPenRadius(.005);
 		for (Point p: points) {
-			System.out.println(p);
+			StdDraw.point(p.x, p.y);
 		}
-//		StdDraw.setPenRadius(.002);
+		StdDraw.setPenRadius(.002);
 		for (Edge e: diagram.edges) {
-			System.out.println(e);
+			StdDraw.line(e.start.x, e.start.y, e.end.x, e.end.y);
 		}
 		
 	}

@@ -63,6 +63,7 @@ public class Point implements Comparable<Point>{
         return true;
     }
 
+
     @Override
     public int compareTo(Point o) {
         return this.standard()> o.standard()?1:(this.standard()==o.standard()?0:-1);

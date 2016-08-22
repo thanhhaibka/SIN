@@ -20,7 +20,11 @@
             <artifactId>core</artifactId>
             <version>2.2.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.googlecode.princeton-java-introduction</groupId>
+            <artifactId>introcs</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <dependency>
             <groupId>mesh</groupId>
             <artifactId>mesh</artifactId>

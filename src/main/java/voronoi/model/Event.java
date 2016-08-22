@@ -1,5 +1,7 @@
 package voronoi.model;
 
+import Data.Point;
+
 // an event is either a site or circle event for the sweep line to process
 public class Event implements Comparable<Event> {
 	

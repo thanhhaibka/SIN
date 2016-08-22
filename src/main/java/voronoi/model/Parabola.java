@@ -1,5 +1,7 @@
 package voronoi.model;
 
+import Data.Point;
+
 // represents the beach line
 // can either be a site that is the center of a parabola
 // or can be a vertex that bisects two sites

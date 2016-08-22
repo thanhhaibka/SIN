@@ -2,18 +2,17 @@ package graph.model;
 
 import Data.Point;
 import cluster.Cluster;
+import graph.model.*;
 
 /**
- * Created by prnc on 19/08/2016.
+ * Created by prnc on 20/08/2016.
  */
-public class Vertex extends Cluster{
+public class Vertex2 extends Point {
     final private String id;
     final private String name;
 
-    public Vertex(String id, String name, Cluster cluster) {
-        super(Integer.parseInt(id));
-        this.setCentrePoint(cluster.getCentrePoint());
-        this.setPoints(cluster.getPoints());
+    public Vertex2(String id, String name, Point point) {
+        super(point.x, point.y);
         this.id = id;
         this.name = name;
     }
@@ -42,7 +41,7 @@ public class Vertex extends Cluster{
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Vertex other = (Vertex) obj;
+        graph.model.Vertex2 other = (graph.model.Vertex2) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -55,5 +54,4 @@ public class Vertex extends Cluster{
     public String toString() {
         return name;
     }
-
 }

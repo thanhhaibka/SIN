@@ -1,13 +1,15 @@
 package voronoi.model;
 
+import Data.Point;
+
 // an edge on the Voronoi diagram
 public class Edge {
 
-	Point start;
-	Point end;
-	Point site_left;
-	Point site_right;
-	Point direction; // edge is really a vector normal to left and right points
+	public Point start;
+	public Point end;
+	public Point site_left;
+	public Point site_right;
+	public Point direction; // edge is really a vector normal to left and right points
 	
 	Edge neighbor; // the same edge, but pointing in the opposite direction
 	

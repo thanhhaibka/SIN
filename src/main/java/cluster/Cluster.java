@@ -22,8 +22,8 @@ public class Cluster {
     }
 
     public double getDistance(Cluster c) {
-        printCluster();
-        c.printCluster();
+//        printCluster();
+//        c.printCluster();
         double min = Double.MAX_VALUE;
         for (Point p1 : points) {
             for (Point p2 : c.points) {
