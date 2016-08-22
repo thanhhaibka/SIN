@@ -1,22 +1,4 @@
 package graph.model;
-
-import Data.Point;
-<<<<<<< HEAD
-
-/**
- * Created by pc on 18/08/2016.
- */
-public class Vertex extends Point{
-    final private String id;
-    final private String name;
-
-
-    public Vertex(String id, String name, double x, double y) {
-        super(x, y);
-        this.id = id;
-        this.name = name;
-    }
-=======
 import cluster.Cluster;
 
 /**
@@ -34,7 +16,6 @@ public class Vertex extends Cluster{
         this.name = name;
     }
 
->>>>>>> ceb0b9dbbcbc92103a5797cb782997a97d5ff8ea
     public String getId() {
         return id;
     }
@@ -72,9 +53,4 @@ public class Vertex extends Cluster{
     public String toString() {
         return name;
     }
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ceb0b9dbbcbc92103a5797cb782997a97d5ff8ea
