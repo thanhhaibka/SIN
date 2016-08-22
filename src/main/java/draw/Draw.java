@@ -64,20 +64,26 @@ public class Draw extends JApplet{
             for (int j = 0; j <path.size()-1 ; j++) {
                 graph.model.Vertex vertex= path.get(j);
                 graph.model.Vertex vertex2= path.get(j+1);
-                Double d= Point.getDistance(new Point(vertex.getCentrePoint().x, vertex.getCentrePoint().y),
-                        new Point(vertex2.getCentrePoint().x, vertex2.getCentrePoint().y));
-                int temp= (int)Math.round(d);
-                for(int var=0; var<temp; var++){
-                    g2d.draw(new Line2D.Double());
-                }
+                Point p1, p2;
+                p1=new Point(vertex.getCentrePoint().x, vertex.getCentrePoint().y);
+                p2= new Point(vertex2.getCentrePoint().x, vertex2.getCentrePoint().y);
+                drawAPath(g2d, p1, p2);
             }
         }
     }
 
     public void drawAPath(Graphics2D g, Point var1, Point var2){
-        Double d= Point.getDistance(var1, var2);
+        double r= Individual.R;
+        Double d= Point.getDistance(var1, var2)/(2*r);
         int temp= (int)Math.round(d);
-
+        double tan= (var2.y- var1.y)/(var2.x-var1.x);
+        double atan=Math.atan(tan);
+        System.out.println(temp);
+        g.draw(new Ellipse2D.Double((var1.x-r)*5,(var1.y-r)*5, 10*r, 10*r));
+        for(int i=0; i<temp; i++){
+            g.draw(new Ellipse2D.Double((var1.x+(i+1)*2*r*Math.cos(atan)-r)*5,(var1.y+(i+1)*2*r*Math.sin(atan)-r)*5, 10*r, 10*r));
+        }
+        g.draw(new Ellipse2D.Double((var2.x-r)*5,(var2.y-r)*5, 10*r, 10*r));
     }
 
     public void drawEdges(Graphics g, LinkedList<Vertex> path) {
