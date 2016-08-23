@@ -24,12 +24,13 @@ public class Individual {
     public Point baseStation;
     public List<Car> cars;
     public Graph graph;
+    public Kmean kmean;
     public static final double R=4;
     public DijkstraAlgorithm dijkstraAlgorithm;
 
     public Individual(Point baseStation){
         cars= new ArrayList<>();
-        for(int i=0; i<20; i++){
+        for(int i=0; i<10; i++){
             Car car= new Car(i+"");
             car.setCars(CreateCar.createCar(24));
             cars.add(car);
@@ -70,7 +71,8 @@ public class Individual {
 //            System.out.print(kmeanList.get(i).getNUM_CLUSTERS()+ " ");
 //        }
 //
-        Kmean kmean= new Kmean(p, (int)Math.round(p.size()/10));
+        kmean= new Kmean(p, (int)Math.floor(p.size()/(10*R*R/16)));
+        System.out.println("num of clusters "+ kmean.getNUM_CLUSTERS());
         List<Cluster> clusters= kmean.getClusters();
         clusters.add(var);
         for(int i=0; i<clusters.size(); i++){
@@ -82,8 +84,8 @@ public class Individual {
             for(int j=0; j<nodes.size(); j++){
                 nodes.get(i);
                 nodes.get(j);
-                Double d= nodes.get(i).getDistance(nodes.get(j))/R;
-                int temp= round(d);
+                Double d= nodes.get(i).getDistance(nodes.get(j))/(R);
+                int temp= (int)Math.floor(d);
                 edges.add(new Edge(i+" "+j, nodes.get(i), nodes.get(j), temp));
             }
         }
@@ -101,11 +103,6 @@ public class Individual {
 //            }
 //            System.out.println();
 //        }
-    }
-
-    private int round(double d){
-        Long var1= Math.round(d);
-        return  var1.intValue();
     }
 
     public static void main(String args[]){

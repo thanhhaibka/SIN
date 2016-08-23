@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class CreateCar {
     public static final int num = 10;
-    public static final double v = 4;
+    public static final double v = 15;
     public static final Point[] direc = {new Point(-1, 0), new Point(1, 0), new Point(0, -1), new Point(0, 1),
             new Point(-1, -1), new Point(1, 1), new Point(1, -1), new Point(-1, 1)
     };
